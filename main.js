@@ -41,10 +41,23 @@ async function showForecast(latlng) {
     // console.log(jsondata);
 
     //popup erzeugen
+    let details = jsondata.properties.timeseries[0].data.instant.details
+    let markup = `
+    <ul> 
+        <li>Luftdruck (hPa): ${details.air_pressure_at_sea_level} </li>
+        <li>Lufttemperatur (°C): ${details.air_temperature} </li>
+        <li>Bewölkerungsgrad (%): ${details.cloud_area_fraction}</li>
+        <li>Luftfeuchtigkeit (%): ${details.relative_humidity}</li>
+        <li>Windrichtung (°): ${details.wind_from_direction}</li>
+        <li>Windgeschwindigkeit (km/h): ${details.wind_speed}</li>
+
+    </ul>
+    `;
+
     L.popup([
         latlng.lat, latlng.lng
     ], {
-        content: "Juhu, Pause bis 20 nach!"
+        content: markup
     }).openOn(overlays.forecast)
 
 }
