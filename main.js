@@ -29,3 +29,8 @@ let layerControl = L.control.layers({
 L.control.scale({
     imperial: false,
 }).addTo(map);
+
+// auf Karteklick reagieren
+map.on("click", function(evt) {
+    console.log(evt.latlng);
+})
