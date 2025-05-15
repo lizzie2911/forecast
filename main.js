@@ -30,7 +30,12 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
-
+// Ort über OpenStrretMap reverse geocoding bestimmen
+async function getPlaceName(url) {
+    let response = await fetch(url);
+    let jsondata = await response.json();
+    return jsondata.display_name; 
+} 
 // MET Norway Vorhersage visualisieren
 async function showForecast(latlng) {
     //console.log("Popup erzeugen bei:", latlng);
@@ -62,6 +67,7 @@ async function showForecast(latlng) {
         
         let time = new Date(jsondata.properties.timeseries[i].time);
         markup += `<img src="icons/${symbol}.svg"style="width:32px"title="${time.toLocaleString()}">`;
+
 
     }
     L.popup([
