@@ -61,7 +61,7 @@ async function showForecast(latlng) {
         let symbol = jsondata.properties.timeseries[i].data.next_1_hours.summary.symbol_code;
         
         let time = new Date(jsondata.properties.timeseries[i].time);
-        markup += `<img src="icons/${symbol}.svg" style="width:32px"gitle="${time.toLocaleString()}">`;
+        markup += `<img src="icons/${symbol}.svg"style="width:32px"title="${time.toLocaleString()}">`;
 
     }
     L.popup([
