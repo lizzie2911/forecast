@@ -30,9 +30,15 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
+
+// MET Norway Vorhersage visualisieren
+async function showForecast(latlng) {
+    console.log("Popup erzeugen bei:", latlng);
+}
 // auf Karteklick reagieren
 map.on("click", function(evt) {
     console.log(evt.latlng);
+    showForecast(evt.latlng);
 })
 
 // Klick auf Innsbruck simulieren
@@ -40,7 +46,7 @@ map.fire("click", {
     latlng: {
         lat: ibk.lat,
         lng: ibk.lng,
-        
+
     }
 
 })
